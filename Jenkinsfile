@@ -17,8 +17,10 @@ pipeline {
     
     stage('Test') {
       steps {
+         script {
         echo 'Running Snyk test...'
         sh 'mvn snyk:test -fn' // Run Snyk test with Maven
+      }
       }
     }
   }
