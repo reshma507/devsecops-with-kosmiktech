@@ -14,7 +14,7 @@ pipeline {
     }
 	stage('RunSCAAnalysisUsingSnyk') {
             steps {		
-				withCredentials([string(credentialsId: 'Snyk_token', variable: 'SNYK_TOKEN')]) {
+				withCredentials([string(credentialsId: 'SNYK_API', variable: 'SNYK_TOKEN')]) {
 					sh 'mvn snyk:test -fn'
 				}
 			}
