@@ -6,6 +6,10 @@ pipeline {
   tools { 
         maven 'Maven_3_8_4'  
     }
+     environment {
+        // Fetch the Snyk API token securely from Jenkins Credentials
+        SNYK_API_TOKEN = credentials('SNYK_API') // Jenkins Credentials Binding
+    }
    stages{
     stage('CompileandRunSonarAnalysis') {
             steps {	
@@ -13,16 +17,13 @@ pipeline {
 			}
     }
 	  stage('Test') {
-      steps {
-        echo 'Testing...'
-        snykSecurity(
-          snykInstallation: 'SNYK_TOKEN',
-          snykTokenId: 'SNYK_API',
-          // place other parameters here
-        )
-          sh 'mvn snyk:test -fn'
-      }
-    }
+            steps {
+                echo 'Running Snyk test...'
+
+                // Run Snyk test command using Maven
+                sh 'mvn snyk:test -fn' // This should now work after adding snyk-maven-plugin
+            }
+        }
 	stage('Build') { 
             steps { 
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
