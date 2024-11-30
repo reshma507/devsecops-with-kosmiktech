@@ -1,4 +1,6 @@
 def registry = 'https://kosmikwithdevsecops.jfrog.io/'
+def imageName = 'kosmikwithdevsecops.jfrog.io/kosmikdevsecops-docker-local/app'
+def version   = '1.0.1'
 pipeline {
   agent any
   tools { 
@@ -68,8 +70,8 @@ pipeline {
                      def uploadSpec = """{
                           "files": [
                             {
-                              "pattern": "/home/ubuntu/jenkins/workspace/tweet-trend/taxi-booking/target/(*)",
-                              "target": "taxiasvalaxy-libs-release-local/{1}",
+                              "pattern": "jarstaging/(*)",
+                              "target": "kosmikdevsecops-libs-release/{1}",
                               "flat": "false",
                               "props" : "${properties}",
                               "exclusions": [ "*.sha1", "*.md5"]
