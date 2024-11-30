@@ -20,6 +20,9 @@ pipeline {
           snykTokenId: 'SNYK_API',
           // place other parameters here
         )
+        {
+          sh 'mvn snyk:test -fn'
+        }
       }
     }
 	stage('Build') { 
