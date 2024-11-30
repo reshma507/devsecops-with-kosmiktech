@@ -1,3 +1,4 @@
+def registry = 'https://kosmikwithdevsecops.jfrog.io/'
 pipeline {
   agent any
   tools { 
