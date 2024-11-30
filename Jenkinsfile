@@ -6,7 +6,7 @@ pipeline {
   tools { 
         maven 'Maven_3_8_4'  
     }
-     environment {
+    environment {
         // Fetch the Snyk API token securely from Jenkins Credentials
         SNYK_API_TOKEN = credentials('SNYK_API') // Jenkins Credentials Binding
     }
