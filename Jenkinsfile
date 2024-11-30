@@ -21,7 +21,7 @@ pipeline {
         snykSecurity(
           snykToken: "${SNYK_API_TOKEN}",
           snykOrg: 'reshma507',
-          snykProject: 'com.example.maven-project:maven-project'
+          snykProject: 'reshma507/devsecops-with-kosmiktech'
         )
         sh 'mvn snyk:test -fn' // Run Snyk test with Maven
       }
